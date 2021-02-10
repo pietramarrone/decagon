@@ -90,7 +90,7 @@ def construct_placeholders(edge_types):
     }
     placeholders.update({
         'adj_mats_%d,%d,%d' % (i, j, k): tf.sparse_placeholder(tf.float32)
-        for i, j in edge_types for k in range(edge_types[i,j])})
+        for i, j in edge_types for k in range(edge_types[i, j])})
     placeholders.update({
         'feat_%d' % i: tf.sparse_placeholder(tf.float32)
         for i, _ in edge_types})
@@ -113,11 +113,14 @@ def construct_placeholders(edge_types):
 # (3) Train & test the model.
 ####
 
+
 val_test_size = 0.05
 n_genes = 500
 n_drugs = 400
 n_drugdrug_rel_types = 3
 gene_net = nx.planted_partition_graph(50, 10, 0.2, 0.05, seed=42)
+
+nx.planted_partition_graph()
 
 gene_adj = nx.adjacency_matrix(gene_net)
 gene_degrees = np.array(gene_adj.sum(axis=0)).squeeze()

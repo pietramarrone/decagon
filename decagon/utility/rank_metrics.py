@@ -23,7 +23,7 @@ def apk(actual, predicted, k=10):
             The average precision at k over the input lists
 
     """
-    if len(predicted)>k:
+    if len(predicted) > k:
         predicted = predicted[:k]
 
     score = 0.0
@@ -64,4 +64,4 @@ def mapk(actual, predicted, k=10):
             The mean average precision at k over the input lists
 
     """
-    return np.mean([apk(a,p,k) for a, p in zip(actual, predicted)])
+    return np.mean([apk(a, p, k) for a, p in zip(actual, predicted)])
